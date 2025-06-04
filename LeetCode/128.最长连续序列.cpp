@@ -3,7 +3,6 @@
  *
  * [128] 最长连续序列
  */
-
 // @lc code=start
 #include <iostream>
 #include <vector>
