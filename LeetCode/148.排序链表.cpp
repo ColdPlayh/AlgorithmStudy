@@ -21,22 +21,22 @@ public:
         if (head == nullptr || head->next == nullptr)
             return head;
 
-        ListNode *middle = FindMiddleNode(head);
+        ListNode *head2 = FindMiddleNode(head);
 
-        ListNode *head1 = sortList(head);
-        ListNode *head2 = sortList(middle);
-        return Merge(head1, head2);
+        head = sortList(head);
+        head2 = sortList(head2);
+        return Merge(head, head2);
     }
 
     ListNode *FindMiddleNode(ListNode *head)
     {
-        ListNode *pre;
-        ListNode *slow, *fast = head;
+        ListNode *pre = head;
+        ListNode *slow=head ,*fast = head;
         while (fast && fast->next)
         {
             pre = slow;
             slow = slow->next;
-            fast = fast->next;
+            fast = fast->next->next;
         }
         pre->next = nullptr;
         return slow;
@@ -59,7 +59,7 @@ public:
             }
             cur = cur->next;
         }
-        cur->next = list1 == nullptr ? list2 : list1;
+        cur->next = list1==nullptr ? list2: list1;
         return dummy.next;
     }
 };
